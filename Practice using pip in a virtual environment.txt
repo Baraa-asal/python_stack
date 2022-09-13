@@ -1,0 +1,80 @@
+Microsoft Windows [Version 10.0.19043.1889]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\user\Desktop\A-X-S-O-S\ASSIGNMENTS\python_stack\my_environments>python -m venv py3Env
+
+C:\Users\user\Desktop\A-X-S-O-S\ASSIGNMENTS\python_stack\my_environments>pip list
+Package    Version
+---------- -------
+asgiref    3.5.2
+Django     4.1.1
+pip        22.2.2
+setuptools 63.2.0
+sqlparse   0.4.2
+tzdata     2022.2
+
+C:\Users\user\Desktop\A-X-S-O-S\ASSIGNMENTS\python_stack\my_environments>call py3Env\Scripts\activate
+
+(py3Env) C:\Users\user\Desktop\A-X-S-O-S\ASSIGNMENTS\python_stack\my_environments>pip list
+Package    Version
+---------- -------
+pip        22.2.2
+setuptools 63.2.0
+
+(py3Env) C:\Users\user\Desktop\A-X-S-O-S\ASSIGNMENTS\python_stack\my_environments>deactivate
+C:\Users\user\Desktop\A-X-S-O-S\ASSIGNMENTS\python_stack\my_environments>pip3 list
+Package    Version
+---------- -------
+asgiref    3.5.2
+Django     4.1.1
+pip        22.2.2
+setuptools 63.2.0
+sqlparse   0.4.2
+tzdata     2022.2
+
+C:\Users\user\Desktop\A-X-S-O-S\ASSIGNMENTS\python_stack\my_environments>call py3Env\Scripts\activate
+
+(py3Env) C:\Users\user\Desktop\A-X-S-O-S\ASSIGNMENTS\python_stack\my_environments>pip install Django==2.2.4
+Collecting Django==2.2.4
+  Downloading Django-2.2.4-py3-none-any.whl (7.5 MB)
+     ---------------------------------------- 7.5/7.5 MB 1.5 MB/s eta 0:00:00
+Collecting sqlparse
+  Using cached sqlparse-0.4.2-py3-none-any.whl (42 kB)
+Collecting pytz
+  Downloading pytz-2022.2.1-py2.py3-none-any.whl (500 kB)
+     ---------------------------------------- 500.6/500.6 kB 2.1 MB/s eta 0:00:00
+Installing collected packages: pytz, sqlparse, Django
+Successfully installed Django-2.2.4 pytz-2022.2.1 sqlparse-0.4.2
+
+(py3Env) C:\Users\user\Desktop\A-X-S-O-S\ASSIGNMENTS\python_stack\my_environments>pip freeze
+Django==2.2.4
+pytz==2022.2.1
+sqlparse==0.4.2
+
+(py3Env) C:\Users\user\Desktop\A-X-S-O-S\ASSIGNMENTS\python_stack\my_environments>cd ~/Desktop
+The system cannot find the path specified.
+
+(py3Env) C:\Users\user\Desktop\A-X-S-O-S\ASSIGNMENTS\python_stack\my_environments>cd Desktop
+The system cannot find the path specified.
+
+(py3Env) C:\Users\user\Desktop\A-X-S-O-S\ASSIGNMENTS\python_stack\my_environments>pip freeze > requirements.txt
+
+(py3Env) C:\Users\user\Desktop\A-X-S-O-S\ASSIGNMENTS\python_stack\my_environments>ls
+'ls' is not recognized as an internal or external command,
+operable program or batch file.
+
+(py3Env) C:\Users\user\Desktop\A-X-S-O-S\ASSIGNMENTS\python_stack\my_environments>pip uninstall Django
+Found existing installation: Django 2.2.4
+Uninstalling Django-2.2.4:
+  Would remove:
+    c:\users\user\desktop\a-x-s-o-s\assignments\python_stack\my_environments\py3env\lib\site-packages\django-2.2.4.dist-info\*
+    c:\users\user\desktop\a-x-s-o-s\assignments\python_stack\my_environments\py3env\lib\site-packages\django\*
+    c:\users\user\desktop\a-x-s-o-s\assignments\python_stack\my_environments\py3env\scripts\django-admin.exe
+    c:\users\user\desktop\a-x-s-o-s\assignments\python_stack\my_environments\py3env\scripts\django-admin.py
+Proceed (Y/n)? Y
+  Successfully uninstalled Django-2.2.4
+
+(py3Env) C:\Users\user\Desktop\A-X-S-O-S\ASSIGNMENTS\python_stack\my_environments>pip show Django
+WARNING: Package(s) not found: Django
+
+(py3Env) C:\Users\user\Desktop\A-X-S-O-S\ASSIGNMENTS\python_stack\my_environments>
