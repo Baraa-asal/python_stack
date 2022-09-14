@@ -1,0 +1,38 @@
+#1. Basics
+for x in range (0,151):
+  print(x)
+
+#2. Multiple of five
+for x in range (5,1000):
+  if x%5 == 0:
+    print(x)
+
+#3. Counting, the Dojo Way
+for x in range (1,100):
+  if x%10 ==0:
+    print("Coding Dojo")
+  elif x%5 == 0:
+    print("Coding")
+  else:
+    print(x)
+
+#4. Whoa. That Sucker's Huge
+sum = 0
+for x in range (0, 500000):
+  sum += x
+print(sum)
+
+#5. Countdown by Fours
+for k in range (2014,0,-4):
+  print(k)
+
+#6. Flexible Counter
+lowNum = input("Enter lowNum: ")
+highNum = input("Enter highNum: ")
+mult = input("Enter mult: ")
+for w in range (int(lowNum), int(highNum)):
+  if w % int(mult) == 0:
+    print(w)
+
+  
+  
