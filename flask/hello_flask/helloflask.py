@@ -16,7 +16,7 @@ def sayhi(name):
 
 @app.route('/repeat/<int:num>/<name>')
 def repeat(num, name):
-    return (name+ ' ')*num
+    return ('<h1>' + name+ '</h1>' + '<br>')*num
 
 if __name__ == "__main__":
     app.run(debug=True)
