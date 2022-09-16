@@ -1,14 +1,14 @@
 #  O  N  E  ######################################################################
-# x = [ [5,2,3], [10,8,9] ]                     # list of lists
-# students = [                                  #a list that contains dictionary
-#      {'first_name':  'Michael', 'last_name' : 'Jordan'},
-#      {'first_name' : 'John', 'last_name' : 'Rosales'}
-# ]
-# sports_directory = {                          #this is a dictionary that has keys inside it, containing lists
-#     'basketball' : ['Kobe', 'Jordan', 'James', 'Curry'],
-#     'soccer' : ['Messi', 'Ronaldo', 'Rooney']
-# }
-# z = [ {'x': 10, 'y': 20} ]                    #a list of one dictionary
+x = [ [5,2,3], [10,8,9] ]                     # list of lists
+students = [                                  #a list that contains dictionary
+     {'first_name':  'Michael', 'last_name' : 'Jordan'},
+     {'first_name' : 'John', 'last_name' : 'Rosales'}
+]
+sports_directory = {                          #this is a dictionary that has keys inside it, containing lists
+    'basketball' : ['Kobe', 'Jordan', 'James', 'Curry'],
+    'soccer' : ['Messi', 'Ronaldo', 'Rooney']
+}
+z = [ {'x': 10, 'y': 20} ]                    #a list of one dictionary
 
 # #1
 # x[1][0] = 15
@@ -30,9 +30,9 @@
 
 students = [
          {'first_name':  'Michael', 'last_name' : 'Jordan'},
-         {'first_name' : 'John', 'last_name' : 'Rosales'},
-         {'first_name' : 'Mark', 'last_name' : 'Guillen'},
-         {'first_name' : 'KB', 'last_name' : 'Tonel'}
+         {'x' : 'John', 'last_name' : 'Rosales'},
+         {'z' : 'Mark', 'last_name' : 'Guillen'},
+         {'m' : 'KB', 'last_name' : 'Tonel'}
     ]
 
 # def iterateDictionary(students):
@@ -47,20 +47,25 @@ students = [
 # iterateDictionary2('first_name', students)
 # iterateDictionary2('last_name', students)
 
-for key, value in students:
-    print (key, value)
+for i in range(len(students)):
+    # print (key, value[key])
+    sentence = ""
+    for key, val in students[i].items():
+        sentence += key + ' - ' + val +", "
+    print(sentence)
+
 
 
 # T  H  R  E  E  #####################################################################
 
-# dojo = {
-#    'locations': ['San Jose', 'Seattle', 'Dallas', 'Chicago', 'Tulsa', 'DC', 'Burbank'],
-#    'instructors': ['Michael', 'Amy', 'Eduardo', 'Josh', 'Graham', 'Patrick', 'Minh', 'Devon']
-# }
-# def printInfo(dojo):
-#     for person in dojo:
-#         print(len(dojo[person]), person,'\n')
-#         for x in dojo[person]:
-#             print(x)
+dojo = {
+   'locations': ['San Jose', 'Seattle', 'Dallas', 'Chicago', 'Tulsa', 'DC', 'Burbank'],
+   'instructors': ['Michael', 'Amy', 'Eduardo', 'Josh', 'Graham', 'Patrick', 'Minh', 'Devon']
+}
+def printInfo(dojo):
+    for key in dojo:
+        print(len(dojo[key]), key,'\n')   #we can access the value using the key
+        for person in dojo[key]:
+            print(person)
 
-# printInfo(dojo)
+printInfo(dojo)
