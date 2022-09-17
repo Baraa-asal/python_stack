@@ -20,6 +20,9 @@
 
 # # ######################## 3 Sum Total :
 
+from traceback import print_tb
+
+
 def sum_total(Arr):
     listSum = 0
     for num in Arr:
@@ -91,15 +94,15 @@ def maximum(myArr):
 
 def reverse_list(list):
     temp = 0
-    half_length = int((len(list)/2))
-    for i in range(half_length):
-        for j in range(len(list)-1 ,half_length, -1):
-            temp = list[i]
-            list[i] = list[j]
-            list[j] = temp
-    print(half_length)
+    j = len(list)-1
+    half_length = int(len(list)/2)
+    for i in range(0, half_length, 1):
+        temp = list[i]
+        list[i] = list[j]
+        list[j] = temp
+        j-=1
     return list
-print(reverse_list([37,2,1,-9,1]))
+print(reverse_list([1,2,3,4,5,6,7]))
 
 
 
