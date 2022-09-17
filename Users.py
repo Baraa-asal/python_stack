@@ -1,14 +1,16 @@
+from bankAccount import BankAccount
+
 class User:		
     def __init__(self, name, email):
         self.name = name
         self.email = email
-        self.account_balance = 0
+        self.account = BankAccount(0,0)   #we instantiated an object of type bank account in account property
     def make_deposit(self, amount):	
-        self.account_balance += amount
+        self.account.deposit(amount)
     def make_withdrawal(self, amount):
-        self.account_balance -= amount	
+        self.account.withdraw(amount)
     def display_user_balance(self):
-        print("User:", self.name,"balance:",self.account_balance)
+        print("User:", self.name,"balance:",self.account.balance)
     def transfer_money(self, other_user, amount):
         other_user.make_deposit(amount)
         self.make_withdrawal(amount)
