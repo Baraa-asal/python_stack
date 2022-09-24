@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dojo Survey Index</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<style>
+    body {
+        padding-top: 8%;
+    }
+</style>
+<body>
+  <div class="container">
+      <div class="row">
+          <div class="col-md-2"></div>
+          <div class="col-md-8 border border-dark p-5">
+            
+              <form action="/result" method="post">
+                {% csrf_token %}
+                  <div class="row g-3 align-items-center">
+                      <div class="col-md-3">
+                        <label for="name" class="col-form-label">Your Name:</label>
+                      </div>
+                      <div class="col-md-9">
+                        <input type="text" id="name" name="name" class="form-control mb-3">
+                      </div>
+                      </div>
+                      <div class="row g-3 align-items-center">
+            <div class="col-md-3">
+              <label for="dojo-location" class="col-form-label">Dojo Location:</label>
+            </div>
+            <div class="col-md-9">
+              <select name="country" class="form-control form-select form-select-lg mb-3">
+              <option selected>San Jose</option>
+              <option value="1">Palestine</option>
+              <option value="2">Jordan</option>
+              <option value="3">America</option>
+              </select>
+            </div>
+                      </div>
+          <div class="row g-3 align-items-center">
+            <div class="col-md-3">
+              <label for="dojo-location" class="col-form-label">Favorite Language:</label>
+            </div>
+            <div class="col-md-9">
+              <select name="language" class="form-control form-select form-select-lg mb-3" >
+              <option selected>Python</option>
+              <option value="1">C++</option>
+              <option value="2">JavaScript</option>
+              <option value="3">Java</option>
+              </select>
+            </div>
+            </div>
+          <div class="row g-3 align-items-center">
+              <div class="col-md-12">
+                <div class="form-group">
+                <label for="comment">Comment (optional) </label>
+                <input type="text" class="form-control" name="comment" id="comment" placeholder="Write here if you have any comment">
+                </div>
+            </div>
+          </div>  
+
+          <div class="row g-3 align-items-center">
+            <div class="col-md-12">
+              <button type="submit" class="btn btn-info float-right">Submit</button>
+            </div>
+          </div>
+            </form>
+          </div>
+          <div class="col-md-2"></div>
+      </div>
+  </div>
+</body>
+</html>
