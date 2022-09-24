@@ -9,7 +9,6 @@ def root(request):
 def index(request):
     return HttpResponse("Placeholder to later display a list of ALL blogs")
 
-
 def new(request):
     return HttpResponse("Placeholder to display a new form to create a NEW blog")
 

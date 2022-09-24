@@ -1,0 +1,22 @@
+body {
+    font-family: cursive;
+
+}
+h3 {
+    border: black 2px solid;
+    margin: 0 auto;
+    width: 30%;
+    text-align: center;
+    padding: 3%;
+    margin-bottom: 5%;
+}
+
+section {
+    border: black 2px solid;
+    margin: 0 auto;
+    width: 40%;
+    text-align: center;
+    padding: 3%;
+    font-size: 3rem;
+
+}
