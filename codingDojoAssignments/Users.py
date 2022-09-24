@@ -4,7 +4,7 @@ class User:
     def __init__(self, name, email):
         self.name = name
         self.email = email
-        self.account = BankAccount(0,0)   #we instantiated an object of type bank account in account property
+        self.account = BankAccount(0,0)   #we instantiated an object of type bank account in account property, important
     def make_deposit(self, amount):	
         self.account.deposit(amount)
     def make_withdrawal(self, amount):
@@ -14,6 +14,7 @@ class User:
     def transfer_money(self, other_user, amount):
         other_user.make_deposit(amount)
         self.make_withdrawal(amount)
+    
 
         
 bara = User("Bara","bara@gmail.com") 
