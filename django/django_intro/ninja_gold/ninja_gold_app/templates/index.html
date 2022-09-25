@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ninja Gold Game</title>
+</head>
+<style>
+    .options {
+        display: flex;
+        justify-content: space-around;
+    }
+    .golds-sum {
+        width: 100px;
+        border: black solid 1px;
+        padding: 0px 80px 0px 5px;
+    }
+
+</style>
+<body>
+    <div class="your-gold">
+        <label for="golds" class="col-sm-2 col-form-label">Your Gold:</label>
+        <span class="golds-sum">{{request.session.gold}}</span>
+    </div>
+
+    <section class="options">
+        <form class="gold-option" method="post" action="earn_or_lose/">
+            {% csrf_token %}
+            <h4>Farm</h4>
+            <h5>(earns 10-20 gold)</h5>
+            <input name="source" type="hidden" value="farm"/>
+            <button>Find Gold!</button>
+        </form>
+        <form class="gold-option" method="post" action="earn_or_lose/">
+            {% csrf_token %}
+            <h4>Cave</h4>
+            <h5>(earns 10-20 gold)</h5>
+            <input name="source" type="hidden"value="cave"/>
+            <button>Find Gold!</button>
+        </form>
+        <form class="gold-option" method="post" action="earn_or_lose/">
+            {% csrf_token %}
+            <h4>House</h4>
+            <h5>(earns 10-20 gold)</h5>
+            <input name="source" type="hidden"  value="house"/>
+            <button>Find Gold!</button>
+        </form>
+        <form class="gold-option" method="post" action="earn_or_lose/">
+            {% csrf_token %}
+            <h4>Quest</h4>
+            <h5>(earns/takes 0-50 gold)</h5>
+            <input name="source" type="hidden" value="quest"/>
+            <button>Find Gold!</button>
+        </form>
+    </section>
+        <a href="/"><input name="reset" type="submit" value="reset"/></a>
+</body>
+</html>
