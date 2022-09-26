@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>dojos_ninjas</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body class="bg-light">
+    <div class="container d-flex container my-5">
+      <div class="container m-5">
+        <form action="/add_dojo" class="form" method="post">
+          {%csrf_token%}
+          <h2>Dojo:</h2>
+          <label for="dojo-name">Dojo Name</label>
+          <input
+            type="text"
+            id="dojo-name"
+            name="dojo_name"
+            class="form-control border d-block"
+          />
+          <label for="dojo-city">Dojo city</label>
+          <input
+            type="text"
+            id="dojo-city"
+            name="dojo_city"
+            class="form-control border d-block"
+          />
+          <label for="dojo-state">Dojo state</label>
+          <input
+            type="text"
+            id="dojo-state"
+            name="dojo_state"
+            class="form-control border d-block"
+          />
+          <input
+            type="submit"
+            value="add"
+            class="btn btn-outline-success btn-block my-3"
+          />
+        </form>
+      </div>
+      <div class="container m-5">
+        <form action="/add_ninja" class="form" method="post">
+          {%csrf_token%}
+          <h2>Ninja:</h2>
+          <label for="first-name">First Name</label>
+          <input
+            type="text"
+            id="first-name"
+            name="first_name"
+            class="form-control border d-block"
+            required
+          />
+          <label for="last-name">Last Name</label>
+          <input
+            type="text"
+            id="last_name"
+            name="last_name"
+            class="form-control border d-block"
+            required
+          />
+          <label for="dojo">Dojo</label>
+          <select
+            name="dojo"
+            id="dojo"
+            class="form-control border d-block"
+            required
+          >
+            {% for dojo in dojos %}
+            <option value="{{dojo.id}}">{{dojo.name}}</option>
+            {%endfor%}
+          </select>
+          <input
+            type="submit"
+            value="add"
+            class="btn btn-outline-success btn-block my-3"
+          />
+        </form>
+      </div>
+    </div>
+
+    <div class="container all border-top text-center">
+      <h1>All the dojos</h1>
+      <div class="text text-primary text-lg list-unstyled">
+        {%for dojo in dojos%}
+        <div>
+          <h2 class="text text-capitalize text-dark">{{dojo.name}}</h2>
+          <ul class="list-unstyled">
+            {%for ninja in dojo.ninjas.all%}
+            <li>{{ninja.first_name}} || {{ninja.last_name}}</li>
+            {%endfor%}
+          </ul>
+        </div>
+        {%endfor%}
+
+    </div>
+  </body>
+</html>
