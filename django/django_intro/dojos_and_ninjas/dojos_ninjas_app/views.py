@@ -25,6 +25,7 @@ def add_dojo(request):
 
 
 def add_ninja(request):
+
     first_name = request.POST['first_name']
     last_name = request.POST['last_name']
     dojo_id = request.POST['dojo']
@@ -35,3 +36,9 @@ def add_ninja(request):
         dojo=Dojo.objects.get(id=dojo_id)
     )
     return redirect('/')
+
+
+def delete_tables(request):
+    Dojo.objects.all().delete()
+    Ninja.objects.all().delete()
+    return redirect("/")

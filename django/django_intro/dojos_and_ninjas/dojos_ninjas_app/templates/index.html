@@ -12,6 +12,12 @@
       crossorigin="anonymous"
     />
   </head>
+  <style>
+    .btn-outline-danger {
+        width: 200px;
+        margin: auto;
+    }
+  </style>
   <body class="bg-light">
     <div class="container d-flex container my-5">
       <div class="container m-5">
@@ -99,7 +105,10 @@
           </ul>
         </div>
         {%endfor%}
-
     </div>
+    <form action="/delete_all" class="form" method="post">
+    {%csrf_token%}
+    <button type="submit" name="submit" value="delete" class="btn btn-outline-danger btn-lg btn-block text-center">Delete All</button>
+    </form>
   </body>
 </html>
