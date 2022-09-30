@@ -1,0 +1,44 @@
+{% extends 'main.html' %}
+
+{% block body %}
+<section class="container">
+    <p class="text-right"><a href="/shows"><u>Go Back</u></a></p>
+
+    <h1 class="text text-center">{{form_title}}</h1>
+
+    <form style="width: 50%; margin:0 auto;" action="{{form_action}}" method="post">
+        {% csrf_token %}
+        <div class="form-group mb-3">
+            <label for="show_title">Title</label>
+            <input name="show_title" type="text" class="form-control" id="show_title" placeholder="Enter Show Title" value="{{show.title}}">
+            <small id="showTitleHelp" class="form-text text-muted">Title should be at least 2 characters.</small>
+          </div>
+          <div class="form-row mb-3">
+            <div class="col">
+              <label for="show_network">Network</label>
+              <input name="show_network" type="text" class="form-control" id="show_network" placeholder="Network" value="{{show.network}}">
+              <small id="showTitleHelp" class="form-text text-muted">Network should be at least 3 characters.</small>
+            </div>
+            <div class="col">
+              <label for="release_date" >Release Date</label>
+              <input name="show_release_date" type="date" class="form-control" id="release_date" name="release_date" value="{{release_date}}" min="2010-01-01" max="2030-12-31">
+            </div>
+          </div>
+          <div class="form-group mb-3">
+            <label for="description">Description</label>
+            <textarea name="show_description" class="form-control" id="description" rows="3" placeholder="Please enter a description">{{show.description}}</textarea>
+          </div>
+          <div class="text-center mb-2">
+          <button class="btn btn-outline-secondary" style="width: 150px;">{{page_title}}</button>
+        </div>
+        {% if page_title == "Update" %}
+        <div class="text-center">
+        <a href="/shows/{{show.id}}"><u>Go to Show</u></a>
+        </div>
+        {% endif %}
+    </form>
+</section>
+
+
+
+{% endblock %}

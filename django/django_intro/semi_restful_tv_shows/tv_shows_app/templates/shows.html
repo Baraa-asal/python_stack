@@ -1,0 +1,36 @@
+{% extends 'main.html' %}
+
+{% block body %}
+
+<h1 class="text text-center">All Shows</h1>
+<section class="container">
+<table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Title</th>
+        <th scope="col">Network</th>
+        <th scope="col">Release Date</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for show in shows %}
+        <tr>
+            <td>{{ show.id }}</td>
+            <td>{{ show.title }}</td>
+            <td>{{ show.network }}</td>
+            <td>{{ show.release_date }}</td>
+            <td>
+                <a href="{{show.id}}"><u>Show</u></a> |
+                <a href="/shows/{{show.id}}/edit"><u>Edit</u></a> |
+                <a href="/shows/{{show.id}}/delete"><u>Delete</u></a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+  <a href="new"><u>Add a New Shows</u></a>
+</section>
+  
+{% endblock %}

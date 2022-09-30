@@ -1,0 +1,17 @@
+{% extends 'main.html' %}
+
+{% block body %}
+<section class="container mb-5">
+    <p class="text-right"><a href="/shows"><u>Go Back</u></a></p>
+    <h1 class="mb-3">{{show.title}}</h1>
+    <h5 class="mb-3"><span class="font-weight-bold">Title: </span>{{show.title}}</h5>
+    <h5 class="mb-3"><span class="font-weight-bold">Network: </span>{{show.network}}</h5>
+    <h5 class="mb-3"><span class="font-weight-bold">Release Date: </span>{{show.release_date}}</h5>
+    <h5 class="mb-3"><span class="font-weight-bold">Description: </span>{{show.description}}</h5>
+</section>
+<footer class="container">
+    <h5 class="mb-2"><span class="font-weight-bold">Last update: </span>{{show.updated_at}}</h5>
+    <a href="/shows/{{show.id}}/edit"><u>Edit</u></a> |
+    <a href="/shows/{{show.id}}/delete"><u>Delete</u></a>
+</footer>
+{% endblock %}

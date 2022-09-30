@@ -1,0 +1,40 @@
+python manage.py makemigrations
+python manage.py migrate
+python manage.py shell 
+from dojos_ninjas_app.models import *
+
+Dojo.objects.create(name="Miyagi Do", city="Jenin", state="Palestine")
+Dojo.objects.create(name="Fight Club", city="Ramallah", state="Palestine")
+Dojo.objects.create(name="DedicationDojo", city="Tulkarm", state="Palestine")
+
+Dojo.objects.all().delete()
+
+Dojo.objects.create(name="Miyagi Do", city="Jenin", state="Palestine")
+Dojo.objects.create(name="Fight Club", city="Ramallah", state="Palestine")
+Dojo.objects.create(name="DedicationDojo", city="Tulkarm", state="Palestine")
+
+** Create 3 ninjas that belong to the first dojo **
+dojo1 = Dojo.objects.first()
+Ninja.objects.create(dojo=dojo1, first_name='Baraa', last_name= 'Abo-Asal')
+Ninja.objects.create(dojo=dojo1, first_name='Afnan', last_name= 'Abo-Asal')
+Ninja.objects.create(dojo=dojo1, first_name='Bayan', last_name= 'Abo-Asal')
+
+** Create 3 ninjas that belong to the third dojo **
+dojo3 = Dojo.objects.get(id=15)
+Ninja.objects.create(dojo=dojo3, first_name='Yaseen', last_name= 'Abo-Asal')
+Ninja.objects.create(dojo=dojo3, first_name='Rayan', last_name= 'Abo-Asal')
+Ninja.objects.create(dojo=dojo3, first_name='Mousa', last_name= 'Abo-Asal')
+
+** Retrieve all the ninjas from the first dojo **
+Dojo.objects.first().ninjas.all()
+<QuerySet [<Ninja: Ninja object (5)>, <Ninja: Ninja object (6)>, <Ninja: Ninja object (7)>, <Ninja: Ninja object (8)>, <Ninja: Ninja object (9)>, <Ninja: Ninja object (10)>, <Ninja: Ninja object (11)>]>
+
+** Retrieve all the ninjas from the last dojo **
+Dojo.objects.last().ninjas.all()
+<QuerySet []>
+
+** Retrieve the last ninja's dojo **
+Ninja.objects.last().dojo
+
+** Create a new dojo *
+Dojo.objects.create(name="Avatar", city= "Air Temple", state="Air temple State")
