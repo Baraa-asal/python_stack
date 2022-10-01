@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books & Authors</title>
+</head>
+<style>
+    * {
+        font-family: 'Courier New', Courier, monospace;
+    }
+    body {
+        padding: 5%;
+    }
+    main p span {
+        font-size: large;
+        font-weight: bold;
+    }
+    .container {
+        width: 40%;
+    }
+</style>
+<body>
+    <main class="container p-3">
+        <h1> {{ author.first_name }} {{ author.last_name }}</h1>
+        <h3>ID: {{ author.id }} </h3>
+        <p><span>Notes: </span>{{ author.notes }}</p>
+        <h3>Books</h3>
+        <ol class="list-unstyled">
+            {%for book in author.books.all%}
+            <li>{{ book.name }}</li>
+            {%endfor%}
+        </ol>
+
+    </main>
+</body>
+</html>
