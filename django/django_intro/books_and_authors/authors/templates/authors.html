@@ -23,10 +23,10 @@
     }
 </style>
 <body>
-    <div class="container d-inline-flex flex-wrap justify-content-around p-5 mb-5">
+    <div class="container d-inline-flex flex-wrap justify-content-around align-items-center p-5 mb-5">
     <section class="author-form">
         <h1 class="text-center mb-4">Add an Author</h1>
-        <form action="/authors/add_authors" method="post">
+        <form action="/authors/add_author" method="post">
             {% csrf_token %}
             <div class="form-group row">
                 <label for="first_name" class="col-4 col-form-label">First name</label>
@@ -66,12 +66,13 @@
                     <td>{{ author.id }}</td>
                     <td>{{ author.first_name }} {{ author.last_name }}</td>
                     <td>
-                        <a href="/author/{{author.id}}"><u>View</u></a>
+                        <a href="/authors/{{author.id}}"><u>View</u></a>
                     </td>
                 </tr>
                 {% endfor %}
             </tbody>
           </table>
+          <a href="/books"><u>Go to Books</u></a>
     </section>
 </div>
 

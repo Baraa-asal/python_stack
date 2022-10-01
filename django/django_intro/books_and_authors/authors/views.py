@@ -1,5 +1,7 @@
 from multiprocessing import context
 from django.shortcuts import render, redirect
+
+from books.models import Book
 from .models import *
 
 
@@ -25,7 +27,17 @@ def add_new_author(request):
 
 
 def view_author_details(request, author_id):
+    author = Author.objects.get(id=author_id)
     context = {
-        'author': Author.objects.get(id=author_id)
+        'author': author,
+        'all_books': Book.objects.all(),
     }
     return render(request, 'author_details.html', context)
+
+
+def add_author_to_book(request, book_id):
+    # what is sent here in the POST is the option value but i catch it using the select name
+    author_id = request.POST['add_author_to_book']
+    book = Book.objects.get(id=book_id)
+    book.authors.add(Author.objects.get(id=author_id))
+    return redirect('/books/'+str(book_id))
