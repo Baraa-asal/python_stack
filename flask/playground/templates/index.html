@@ -10,7 +10,7 @@
 </head>
 <style>
     body {
-        padding-top: 10%;
+        padding-top: 5%;
     }
 
     h1 {
@@ -18,15 +18,15 @@
         margin: 0 auto;
     }
 
-    .box {
-        height: 100px;
-        width: 100px;
-        background-color: rgb(99, 99, 185);
+    .box{
+        height: 150px;
+        width: 150px;
+        background-color: {{colour}};
+        display: inline-block;
     }
 
     .container {
         margin: 0 auto;
-        width: 40%;
         display: flex;
         justify-content: space-evenly;
     }
@@ -35,9 +35,9 @@
 <body>
     <h1>Welcome!</h1>
     <div class="container">
+        {% for num in range(0, x): %}
         <div class="box">hi</div>
-        <div class="box">hi</div>
-        <div class="box">hi</div>
+        {% endfor %}
     </div>
 </body>
 
