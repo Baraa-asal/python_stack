@@ -8,5 +8,6 @@ urlpatterns = [
     path('shows/create_show/', views.add_show),
     path('shows/<int:show_id>', views.view_show),
     path('shows/<int:show_id>/delete', views.delete_show),
-    path('shows/<int:show_id>/edit', views.update_show),
+    path('shows/<int:show_id>/edit', views.edit_show),
+    path('shows/<int:show_id>/update', views.update_show),
 ]

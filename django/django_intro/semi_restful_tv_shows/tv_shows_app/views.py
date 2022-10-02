@@ -1,6 +1,6 @@
-from platform import release
 from django.shortcuts import render, redirect, HttpResponse
 from .models import *
+from django.contrib import messages
 
 
 def root(request):
@@ -24,7 +24,7 @@ def create_new_show(request):
     return render(request, "show_form.html", context)
 
 
-def update_show(request, show_id):
+def edit_show(request, show_id):
     show = TvShow.objects.get(id=show_id)
     release_date = show.release_date.strftime('%Y-%m-%d')
     context = {
@@ -32,31 +32,45 @@ def update_show(request, show_id):
         'show': show,
         'release_date': release_date,
         'form_title': 'Edit Show' + ' ' + str(show_id) + ': (' + show.title + ')',
-        'form_action': '',       # giving an empty action will submit the form
-                                 # to the same page that got us here(shows/<int:show_id>/edit)
-
+        'form_action': '/shows/' + str(show.id) + '/update',
     }
-    if request.POST:  # i had to check because im using the same function to edit in the database and also to render the form
+    return render(request, "show_form.html", context)
+
+
+def update_show(request, show_id):
+    show = TvShow.objects.get(id=show_id)
+    errors = TvShow.objects.basic_validator(request.POST)
+    if len(errors) > 0:
+        for key, value in errors.items():
+            messages.error(request, value)
+        return redirect('/shows/'+str(show.id)+'/edit')
+
+    else:
         show.title = request.POST['show_title']
         show.network = request.POST['show_network']
         show.release_date = request.POST['show_release_date']
         show.description = request.POST['show_description']
         show.save()
         return redirect('/shows/' + str(show.id))
-    return render(request, "show_form.html", context)
 
 
 def add_show(request):
-    # i did this because if someone tried to enter the url from typing it in the browser.
-    if request.POST:
-        show_title = request.POST['show_title']
-        show_network = request.POST['show_network']
-        show_release_date = request.POST['show_release_date']
-        show_desc = request.POST['show_description']
-        show = TvShow.objects.create(
-            title=show_title, network=show_network, release_date=show_release_date, description=show_desc)
-        return redirect('/shows/' + str(show.id))
-    return redirect('/shows')
+    errors = TvShow.objects.basic_validator(request.POST)
+    if len(errors) > 0:
+        for key, value in errors.items():
+            messages.error(request, value)
+        return redirect('/shows/new/')
+    else:
+        # i did this because if someone tried to enter the url from typing it in the browser.
+        if request.POST:
+            show_title = request.POST['show_title']
+            show_network = request.POST['show_network']
+            show_release_date = request.POST['show_release_date']
+            show_desc = request.POST['show_description']
+            show = TvShow.objects.create(
+                title=show_title, network=show_network, release_date=show_release_date, description=show_desc)
+            return redirect('/shows/' + str(show.id))
+        return redirect('/shows')
 
 
 def view_show(request, show_id):
