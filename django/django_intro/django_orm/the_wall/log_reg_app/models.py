@@ -2,7 +2,7 @@ from django.db import models
 import re
 
 class UserManager(models.Manager):
-    def basic_validator(self, postData, request):
+    def basic_validator(self, postData):
         errors = {}
         EMAIL_REGEX = re.compile(
             r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
