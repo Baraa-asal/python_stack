@@ -1,7 +1,6 @@
 from unittest.util import _MAX_LENGTH
 from django.db import models
 
-
 class TvShowManager(models.Manager):
     def basic_validator(self, postData):
         errors = {}
@@ -22,3 +21,19 @@ class TvShow(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     objects = TvShowManager()
+
+
+def deleteTVShow(show_id):
+    show = TvShow.objects.get(id=show_id)
+    show.delete()
+
+def createTvShow(request):
+    show_title = request.POST['show_title']
+    show_network = request.POST['show_network']
+    show_release_date = request.POST['show_release_date']
+    show_desc = request.POST['show_description']
+    show = TvShow.objects.create(
+        title=show_title, network=show_network, release_date=show_release_date, description=show_desc)
+    return show
+
+

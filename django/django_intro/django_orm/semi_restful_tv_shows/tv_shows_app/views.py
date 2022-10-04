@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, HttpResponse
 from .models import *
+from . import models
 from django.contrib import messages
 
 
@@ -61,18 +62,13 @@ def add_show(request):
             messages.error(request, value)
         return redirect('/shows/new/')
     else:
-        # i did this because if someone tried to enter the url from typing it in the browser.
-        if request.POST:
-            show_title = request.POST['show_title']
-            show_network = request.POST['show_network']
-            show_release_date = request.POST['show_release_date']
-            show_desc = request.POST['show_description']
-            show = TvShow.objects.create(
-                title=show_title, network=show_network, release_date=show_release_date, description=show_desc)
+        # i did the if because if someone tried to enter the url from typing it in the browser.
+        if request.POST:  
+            show = models.createTvShow(request)
             return redirect('/shows/' + str(show.id))
         return redirect('/shows')
 
-
+# This view will display the ....
 def view_show(request, show_id):
     show = TvShow.objects.get(id=show_id)
     context = {
@@ -83,6 +79,5 @@ def view_show(request, show_id):
 
 
 def delete_show(request, show_id):
-    show = TvShow.objects.get(id=show_id)
-    show.delete()
+    models.deleteTVShow(show_id)
     return redirect('/')

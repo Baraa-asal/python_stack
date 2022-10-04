@@ -1,9 +1,8 @@
-from multiprocessing import context
 from django.shortcuts import render, redirect
 
 from books.models import Book
-from .models import *
 
+from .models import *
 
 def root(request):
     return redirect('/authors')
