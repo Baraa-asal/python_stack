@@ -8,19 +8,19 @@ def register_page(request):
     return render(request, 'register.html')
 
 
-def login_page(request):
+def login_page(request, failure=None):
     return render(request, 'login.html')
 
 
-def success(request):
-    try:
-        if request.session['id']:
-            context = {
-                'user': User.objects.get(id=request.session['id']),
-            }
-            return redirect('/wall/')
-    except:
-        return redirect('/')
+# def success(request):
+#     try:
+#         if request.session['id']:
+#             context = {
+#                 'user': User.objects.get(id=request.session['id']),
+#             }
+#             return redirect('/wall/')
+#     except:
+#         return redirect('/')
 
 
 def regist_user(request):
@@ -47,9 +47,9 @@ def login_user(request):
         logged_user = user[0]
         if bcrypt.checkpw(request.POST['password'].encode(), logged_user.password.encode()):
             request.session['id'] = logged_user.id
-        return redirect('/success')
-    else:
-        return redirect('/login')
+            return redirect('/wall/')
+    messages.error(request, "Wrong email or password!")
+    return redirect('/login')
 
 
 def logout(request):

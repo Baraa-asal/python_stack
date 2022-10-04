@@ -4,4 +4,7 @@ from log_reg_app.models import User
 
 
 def root(request):
-    return render(request, 'books.html')
+    context = {
+        'user': User.objects.get(id=request.session['id']),
+    }
+    return render(request, 'books.html', context)
