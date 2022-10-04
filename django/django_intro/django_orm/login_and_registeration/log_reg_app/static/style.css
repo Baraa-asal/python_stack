@@ -99,7 +99,7 @@ output, ruby, section, summary, time, mark, audio, video {
   body {
     font-family: 'Roboto', sans-serif;
     opacity: 0.85;
-    background-color:beige;
+    background-color:rgba(245, 245, 220, 0.795);
   }
   
   h1 {

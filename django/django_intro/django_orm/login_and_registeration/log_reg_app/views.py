@@ -1,12 +1,26 @@
-from email import contentmanager
 from django.shortcuts import render, redirect
 from .models import *
-from . import models
 from django.contrib import messages
+import bcrypt
 
 
-def root(request):
+def register_page(request):
     return render(request, 'register.html')
+
+
+def login_page(request):
+    return render(request, 'login.html')
+
+
+def success(request):
+    try:
+        if request.session['id']:
+            context = {
+                'user': User.objects.get(id=request.session['id']),
+            }
+            return render(request, 'success.html', context)
+    except:
+        return redirect('/')
 
 
 def regist_user(request):
@@ -15,27 +29,29 @@ def regist_user(request):
         for key, value in errors.items():
             messages.error(request, value)
         return redirect('/')
-
     else:
         first_name = request.POST['first_name']
         last_name = request.POST['last_name']
         email = request.POST['email']
         password = request.POST['password']
-        # pw_hash = bcrypt.hashpw(password.encode(), bcrypt.gensalt()).decode()
+        pw_hash = bcrypt.hashpw(password.encode(), bcrypt.gensalt()).decode()
         user = User.objects.create(
-            first_name=first_name, last_name=last_name, email=email, password=password)
-        messages.success(request, "Successfuly registered!")
-        request.session['user_id'] = user.id
+            first_name=first_name, last_name=last_name, email=email, password=pw_hash)
+        request.session['id'] = user.id
         return redirect('/success')
 
 
-def success(request):
-    user = User.objects.get(id=request.session['user_id'])
-    context = {
-        'user': user,
-    }
-    return render(request, 'success.html', context)
+def login_user(request):
+    user = User.objects.filter(email=request.POST['email'])
+    if user:
+        logged_user = user[0]
+        if bcrypt.checkpw(request.POST['password'].encode(), logged_user.password.encode()):
+            request.session['id'] = logged_user.id
+        return redirect('/success')
+    else:
+        return redirect('/login')
 
 
-def login(request):
-    return render(request, 'login.html')
+def logout(request):
+    del request.session['id']
+    return redirect('/')

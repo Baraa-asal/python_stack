@@ -11,15 +11,26 @@
 </head>
 <style>
 	.messages {
-		color: #9dca81;
+		color:beige;
 		font-style: italic;
 		font-size: 1rem;
+	}
+	.wrapper {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	h1 {
+		text-align: center;
+	}
+	body {
+		padding-left: 5%;
 	}
 </style>
 <body>
 	<!-- main -->
 	<div class="main-w3layouts wrapper">
-		<h1>Registeration</h1>
+		<div class="title"><h1>R E G I S T E R A T I O N</h1></div>
 		<div class="main-agileinfo">
 			<div class="agileits-top">
 				{% if messages %}
@@ -35,7 +46,7 @@
 					<input class="text" type="text" name="last_name" placeholder="Last Name" required="">
 					<input class="text email" type="email" name="email" placeholder="Email" required="">
 					<input class="text" type="password" name="password" placeholder="Password" required="">
-					<input class="text w3lpass" type="password" name="password" placeholder="Confirm Password" required="">
+					<input class="text w3lpass" type="password" name="confirm_password" placeholder="Confirm Password" required="">
 					<div class="wthree-text">
 						<div class="clear"></div>
 					</div>
