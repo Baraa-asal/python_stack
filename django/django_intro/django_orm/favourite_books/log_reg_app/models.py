@@ -28,6 +28,8 @@ class UserManager(models.Manager):
 class User(models.Model):
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
+    # liked_books = a list of books a given user likes
+    #books_uploaded = a list of books uploaded by a given user
     email = models.EmailField(max_length=255)
     password = models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now_add=True)
