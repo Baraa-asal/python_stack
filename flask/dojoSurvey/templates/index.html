@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <title>Dojo Survey</title>
+</head>
+<body style="margin: 0px 20%;">
+    <h1 class="display-1"> Dojo Survey</h1>
+    <form action="/result" method="POST">
+        <div class="mb-2">
+            <label for="name" class="form-label">Your Name:</label><input type="text" name="name" class="form-control">
+        </div>
+        <div class="mb-2">
+            <label for="location" class="form-label">Dojo Location:</label>
+            <select name="location" class="form-control">
+                <option value="Nablus">Nablus</option>
+                <option value="Ramallah">Ramallah</option>
+                <option value="Birzeit">Birzeit</option>
+                <option value="Qalqilya">Qalqilya</option>
+                <option value="Hebron">Hebron</option>
+            </select>
+        </div>
+        <div class="mb-2">
+            <label for="fav-lang" class="form-label">Favorite Language:</label>
+            <select name="fav-lang" class="form-control">
+                <option value="html">HTML</option>
+                <option value="Java">JAVA</option>
+                <option value="Python">PYTHON</option>
+                <option value="C#">C#</option>
+                <option value="JavaScript">JAVASCRIPT</option>
+            </select>
+        </div>
+        <div class="mb-2">
+            <label for="comment" class="form-label form-label   ">Comment (optional):</label><br>
+            <textarea name="comment" id="comment" cols="30" rows="10" placeholder="type your comment here" class="form-control"></textarea>
+        </div>
+        <div class="mb-2">
+        <input type="submit" value="Button" class="btn btn-outline-primary">
+        </div>
+    </form>
+</body>
+</html>
