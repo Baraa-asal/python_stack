@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 200px;
+        }
+
+        .times {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        span {
+            margin-right: 15px;
+            border: 1px solid grey;
+            padding: 5px 15px;
+            background-color: rgb(135, 211, 135);
+            border-radius: 50%;
+        }
+
+        h3 {
+            color: rgb(21, 80, 21);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div>
+            <h1>Welcome to <i>Counter</i></h1>
+        </div>
+        <div class="times">
+            <h3>Refresh the page to increase the counter ^_^</h3>
+            <h2><span>{{count}}</span></h2>
+        </div>
+    </div>
+</body>
+
+</html>
